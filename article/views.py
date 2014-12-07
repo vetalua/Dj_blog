@@ -28,9 +28,9 @@ def template_three_simple(request):
 	return render_to_response('myview.html',{'name': view})
 
 def articles (request, page_number=1):
-	al_articles = Article.objects.all()
-	all_articles = reverse(al_articles)
-	print len(all_articles)
+	all_articles = Article.objects.all()
+	#all_articles = reverse(al_articles) # reverse not work !!!
+	#print len(all_articles)
 	print all_articles
 	current_page = Paginator(all_articles, 2)
 	return render_to_response('articles.html', {'articles':current_page.page(page_number),'username' : auth.get_user(request).username, 'page_number' : page_number})
