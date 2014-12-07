@@ -1,0 +1,27 @@
+<! Вариант шаблона пагинатора для комментариев>
+
+		<div class="large-3 large-offset-5 columns">
+			<ul class="pagination">
+				{% if comments.has_previous %}
+					<li class="arrow"><a href="/article/get/{{article.id}}/{{comments.previous_page_number}}/">&laquo;</a></li>
+				{% else %}
+					<li class="arrow unavailable"><a href="">&laquo</a></li>
+				{% endif %}
+				{% for page in comments.paginator.page_range %}
+					{% if page == articles.number %}
+						<li class="current"><a href="/article/get/{{article.id}}/{{comments.previous_page_number}}/">{{ page }}</a></li>
+					{% else %}
+						<li><a href="/article/get/{{article.id}}/{{comments.previous_page_number}}/">{{ page }}</a></li>
+					{% endif %}
+				{% endfor %}
+				{% if articles.has_next %}
+					<li class="arrow"><a href="/article/get/{{article.id}}/{{ comments.next_page_number }}/"> &raquo; </a></li>
+				{% else %}
+					<li class="arrow unavailable"><a href="">&raquo;</a></li>
+				{% endif %}
+
+			</ul>
+			
+		</div>
+		
+	</div>
